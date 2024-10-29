@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuisine</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Center the cards horizontally */
+      }
+
+      .card {
+        position: relative;
+        width: 100%; /* Let Bootstrap handle width */
+        height: 300px; /* Fixed height for the card */
+        overflow: hidden; /* Ensure card size doesn't change */
+        margin: 1rem;
+        flex: 0 0 auto; /* Prevents cards from shrinking */
+      }
+      .card-img-top {
+        width: 100%; /* Ensure the image covers the card */
+        height: 300px; /* Fixed height for the card */
+        object-fit: cover; /* Maintain aspect ratio and cover the area */
+      }
+      .card-body {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        transition: max-height 0.3s ease-in-out;
+        max-height: 50px; /* Only show the title initially */
+        overflow-y: hidden; /* Hide the overflowing content */
+      }
+
+      .card:hover .card-body {
+        max-height: 100%; /* Expand to full height on hover */
+        overflow-y: auto; /* Enable scrolling if content overflows */
+      }
+
+      .card-body .card-title {
+        margin-bottom: 0; /* Ensure no space between title and description */
+        white-space: normal; /* Allow text to wrap */
+        overflow: hidden; /* Hide overflow */
+        text-overflow: ellipsis; /* Optional: Show ellipsis for overflow */
+        max-height: none;
+      }
+
+      .card-body .card-text {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+    <div id="card-container" class="container">
+      <div class="row justify-content-center"></div>
+    </div>
+
+    <!-- Template for cards items -->
+    <template id="card-template">
+      <div class="col-lg-4 col-md-12 d-flex justify-content-center">
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the
+              bulk of the card's content. Additional text to check scrolling
+              behavior when it overflows.
+            </p>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          </div>
+        </div>
+      </div>
+    </template>
+    <script src="scripts.js"></script>
+    <script>
+      // JavaScript to load the navbar content
+
+      const data = [
+        {
+          image:
+            "https://afar.brightspotcdn.com/dims4/default/9960f65/2147483647/strip/true/crop/1400x933+0+0/resize/1800x1200!/format/webp/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2Fb2%2F25%2Fa769e519ec51b0881c8f0dc83da1%2Foriginal-pastizzi-vladimir-20zhoga-shutterstock-1147631540.jpg",
+          title: "Pastizzi",
+          description: "Hello world",
+        },
+        {
+          image:
+            "https://afar.brightspotcdn.com/dims4/default/b65582b/2147483647/strip/true/crop/1400x843+0+0/resize/2880x1734!/format/webp/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F0a%2F6d%2Fa50b5a35ce145982fbcbd054f04e%2Foriginal-rabbit-stew-renata-apanaviciene-shutterstock-1143626741.jpg",
+          title: "Stuffatt tal-fenek (rabbit stew)",
+          description:
+            "Stuffatt tal-fenek, or rabbit stew, is considered the national dish of Malta, enjoyed by locals from a young age. Rabbits were introduced by the Phoenicians and gained popularity during Roman times.",
+        },
+        {
+          image:
+            "https://afar.brightspotcdn.com/dims4/default/d76e2f9/2147483647/strip/true/crop/1400x933+0+0/resize/2880x1920!/format/webp/quality/90/?url=https%3A%2F%2Fk3-prod-afar-media.s3.us-west-2.amazonaws.com%2Fbrightspot%2F8a%2F7e%2F46988ad13c5131e70239ccdb721e%2Foriginal-lampuki-page-frederique-shutterstock-1330360892.jpg",
+          title: "Torta tal-lampuki (lampuki pie)",
+          description:
+            "Lampuki (mahi mahi) is Malta’s unofficial national fish, but you have to order it between August and December, when schools migrate nearby, to get it fresh. Local fishermen have been using the same method to catch lampuki since Roman times, weaving palm tree fronds into flat rafts, which they take out to sea along with their traditional fishing boats. When the fish cluster underneath the rafts to seek shade from the afternoon sun, the fishermen cast their nets, then sell their catch to local restaurants./n/nYou can get lampuki several different ways, but instead of going with the most common preparation (pan-fried in tomato sauce with capers, olives, and lemon), opt for lampuki pie. The dish features a nice mix of Malta’s biggest cultural influences—English (savory pies are practically a religion in the United Kingdom), Arab (mint, lemon peel, and raisins), and Italian (tomatoes, capers, and olives)—all wrapped up in a flaky pastry crust. Some quick example text to build on the card title and make up the bulk of the card's content. Additional text to check scrolling behavior when it overflows. Lampuki (mahi mahi) is Malta’s unofficial national fish, but you have to order it between August and December, when schools migrate nearby, to get it fresh. Local fishermen have been using the same method to catch lampuki since Roman times, weaving palm tree fronds into flat rafts, which they take out to sea along with their traditional fishing boats. When the fish cluster underneath the rafts to seek shade from the afternoon sun, the fishermen cast their nets, then sell their catch to local restaurants./n/nYou can get lampuki several different ways, but instead of going with the most common preparation (pan-fried in tomato sauce with capers, olives, and lemon), opt for lampuki pie. The dish features a nice mix of Malta’s biggest cultural influences—English (savory pies are practically a religion in the United Kingdom), Arab (mint, lemon peel, and raisins), and Italian (tomatoes, capers, and olives)—all wrapped up in a flaky pastry crust. Some quick example text to build on the card title and make up the bulk of the card's content. Additional text to check scrolling behavior when it overflows. Lampuki (mahi mahi) is Malta’s unofficial national fish, but you have to order it between August and December, when schools migrate nearby, to get it fresh. Local fishermen have been using the same method to catch lampuki since Roman times, weaving palm tree fronds into flat rafts, which they take out to sea along with their traditional fishing boats. When the fish cluster underneath the rafts to seek shade from the afternoon sun, the fishermen cast their nets, then sell their catch to local restaurants./n/nYou can get lampuki several different ways, but instead of going with the most common preparation (pan-fried in tomato sauce with capers, olives, and lemon), opt for lampuki pie. The dish features a nice mix of Malta’s biggest cultural influences—English (savory pies are practically a religion in the United Kingdom), Arab (mint, lemon peel, and raisins), and Italian (tomatoes, capers, and olives)—all wrapped up in a flaky pastry crust. Some quick example text to build on the card title and make up the bulk of the card's content. Additional text to check scrolling behavior when it overflows. Lampuki (mahi mahi) is Malta’s unofficial national fish, but you have to order it between August and December, when schools migrate nearby, to get it fresh. Local fishermen have been using the same method to catch lampuki since Roman times, weaving palm tree fronds into flat rafts, which they take out to sea along with their traditional fishing boats. When the fish cluster underneath the rafts to seek shade from the afternoon sun, the fishermen cast their nets, then sell their catch to local restaurants./n/nYou can get lampuki several different ways, but instead of going with the most common preparation (pan-fried in tomato sauce with capers, olives, and lemon), opt for lampuki pie. The dish features a nice mix of Malta’s biggest cultural influences—English (savory pies are practically a religion in the United Kingdom), Arab (mint, lemon peel, and raisins), and Italian (tomatoes, capers, and olives)—all wrapped up in a flaky pastry crust. Some quick example text to build on the card title and make up the bulk of the card's content. Additional text to check scrolling behavior when it overflows. Lampuki (mahi mahi) is Malta’s unofficial national fish, but you have to order it between August and December, when schools migrate nearby, to get it fresh. Local fishermen have been using the same method to catch lampuki since Roman times, weaving palm tree fronds into flat rafts, which they take out to sea along with their traditional fishing boats. When the fish cluster underneath the rafts to seek shade from the afternoon sun, the fishermen cast their nets, then sell their catch to local restaurants./n/nYou can get lampuki several different ways, but instead of going with the most common preparation (pan-fried in tomato sauce with capers, olives, and lemon), opt for lampuki pie. The dish features a nice mix of Malta’s biggest cultural influences—English (savory pies are practically a religion in the United Kingdom), Arab (mint, lemon peel, and raisins), and Italian (tomatoes, capers, and olives)—all wrapped up in a flaky pastry crust. Some quick example text to build on the card title and make up the bulk of the card's content. Additional text to check scrolling behavior when it overflows. Lampuki (mahi mahi) is Malta’s unofficial national fish, but you have to order it between August and December, when schools migrate nearby, to get it fresh. Local fishermen have been using the same method to catch lampuki since Roman times, weaving palm tree fronds into flat rafts, which they take out to sea along with their traditional fishing boats. When the fish cluster underneath the rafts to seek shade from the afternoon sun, the fishermen cast their nets, then sell their catch to local restaurants./n/nYou can get lampuki several different ways, but instead of going with the most common preparation (pan-fried in tomato sauce with capers, olives, and lemon), opt for lampuki pie. The dish features a nice mix of Malta’s biggest cultural influences—English (savory pies are practically a religion in the United Kingdom), Arab (mint, lemon peel, and raisins), and Italian (tomatoes, capers, and olives)—all wrapped up in a flaky pastry crust. Some quick example text to build on the card title and make up the bulk of the card's content. Additional text to check scrolling behavior when it overflows. ",
+        },
+        {
+          image:
+            "https://media-cdn2.greatbritishchefs.com/media/1pwbozfz/beef-olives.whqc_768x512q80.jpg",
+          title: "Bragioli (beef olives)",
+          description:
+            "Bragioli are beef rolls filled with a mixture of ground meat and herbs, braised in rich tomato sauce, showcasing Malta's hearty flavors.",
+        },
+        {
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQydyD-qzjhLF_yAC43mcw1D6hba_VvDMH4dg&s",
+          title: "Kapunata (Maltese ratatouille)",
+          description:
+            "Kapunata is a flavorful vegetable stew made with eggplant, tomatoes, and capers, embodying the Mediterranean essence of Maltese cuisine.",
+        },
+        {
+          image:
+            "https://www.amaltesemouthful.com/wp-content/uploads/2016/01/DSC_0468.jpg",
+          title: "Aljotta (fish soup)",
+          description:
+            "Aljotta is a fragrant fish soup seasoned with herbs, garlic, and lemon, often served with crusty bread, perfect for seafood lovers.",
+        },
+        {
+          image:
+            "https://static.wixstatic.com/media/37a296_ecb31764e74045f6820f4fc35b658e39~mv2.jpg/v1/fill/w_980,h_653,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/37a296_ecb31764e74045f6820f4fc35b658e39~mv2.jpg",
+          title: "Fenkata (rabbit feast)",
+          description:
+            "Fenkata is a traditional rabbit feast celebrated in Malta, where tender rabbit is cooked with wine and served with sides.",
+        },
+        {
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzwIfHw0_-SI-nBX-9eS2pzl7jBxMQAw1b7w&s",
+          title: "Imqaret (date pastries)",
+          description:
+            "Imqaret are sweet pastries filled with dates, deep-fried to perfection, commonly enjoyed as a dessert or snack throughout Malta.",
+        },
+        {
+          image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSov2GsWBy_bmNFmjJr2_oSpjh3X45J75alXA&s",
+          title: "Ħobż biż-żejt (Maltese bread with oil)",
+          description:
+            "Ħobż biż-żejt is a beloved sandwich made with crusty bread, drizzled with olive oil, and filled with tomatoes, tuna, and capers.",
+        },
+        {
+          image:
+            "https://apronandwhisk.com/wp-content/uploads/2020/11/Bigilla-u-Galletti-5-819x1024.jpg",
+          title: "Bigilla (bean dip)",
+          description:
+            "Bigilla is a traditional Maltese dip made from mashed beans, flavored with garlic and herbs, typically served with crusty bread.",
+        },
+      ];
+      loadNavbar();
+      // JavaScript to load the cards content
+      addCards(data);
+    </script>
+  </body>
+</html>

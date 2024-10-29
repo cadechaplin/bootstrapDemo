@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landmarks</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #000000; /* Maltese red */
+        --secondary-color: #ffffff; /* White */
+        --background-color: #f8f9fa; /* Light grey background */
+        --border-color: #000000; /* Maltese red for borders */
+      }
+
+      body {
+        background-color: var(--background-color);
+      }
+
+      .navbar-custom {
+        background-color: var(--primary-color);
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .navbar-custom .navbar-brand,
+      .navbar-custom .nav-link {
+        color: var(--secondary-color);
+      }
+
+      .navbar-custom .nav-link:hover {
+        color: var(--background-color);
+      }
+
+      .carousel {
+        border-radius: 15px; /* Curved corners for the entire carousel */
+        overflow: hidden; /* Ensure content inside the carousel respects the border radius */
+        border: 2px solid var(--border-color);
+      }
+
+      .carousel-item img {
+        height: 600px; /* Fixed height for all images */
+        object-fit: cover; /* Ensures the image fits nicely in the container */
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      .container-fluid {
+        padding: 0 2rem; /* Adjust padding as needed */
+      }
+
+      .landmark-title {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .landmark-description {
+        color: var(--primary-color);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+    <div class="container-fluid">
+      <h1 class="mt-5">Famous Landmarks</h1>
+      <div class="row">
+        <div class="col">
+          <div
+            id="landmarkCarousel"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <div id="carousel-indicators" class="carousel-indicators"></div>
+            <div class="carousel-inner" id="carousel-inner">
+              <!-- Carousel items will be added here dynamically -->
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#landmarkCarousel"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#landmarkCarousel"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template for carousel items -->
+    <template id="carousel-item-template">
+      <div class="carousel-item">
+        <div class="row">
+          <img
+            src=""
+            class="d-block w-100 col-lg-8 col-12 mb-3 mb-lg-0"
+            alt=""
+          />
+          <div
+            class="col-lg-4 col-12 d-flex flex-column justify-content-center align-items-lg-center text-lg-left text-center"
+          >
+            <p class="landmark-title"></p>
+            <p class="landmark-description"></p>
+          </div>
+        </div>
+      </div>
+    </template>
+    <script src="scripts.js"></script>
+    <script>
+      // JavaScript to load the navbar content
+
+      // Data for the carousel slides
+      const slides = [
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Valletta_St_Johns_square_Malta_2014_3.jpg",
+          alt: "Grandmaster's Palace",
+          title: "Grandmaster's Palace",
+          description:
+            "The Grandmaster's Palace in Valletta served as the seat of the Knights of St. John and now houses the Office of the President of Malta and the Parliament. It features richly decorated state rooms and an impressive collection of arms.",
+        },
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Ggantija_Temples%2C_Xaghra%2C_Gozo.jpg",
+          alt: "Ggantija Temples",
+          title: "Ggantija Temples",
+          description:
+            "These ancient temples on Gozo are among the oldest free-standing structures in the world, built around 3600-2500 BC. They are a UNESCO World Heritage site and showcase remarkable megalithic architecture.",
+        },
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/St_John%27s_Co-Cathedral%2C_Valletta_001.jpg/1200px-St_John%27s_Co-Cathedral%2C_Valletta_001.jpg",
+          alt: "St. John's Co-Cathedral",
+          title: "St. John's Co-Cathedral",
+          description:
+            'This stunning cathedral, located in Valletta, features a Baroque interior with beautiful frescoes and the famous painting "The Beheading of Saint John the Baptist" by Caravaggio. It is a major tourist attraction.',
+        },
+        {
+          src: "https://upload.wikimedia.org/wikipedia/commons/5/50/Sudika_Mnajdra_porthole.jpg",
+          alt: "Mnajdra Temples",
+          title: "Mnajdra Temples",
+          description:
+            "Situated on the southern coast of Malta, these prehistoric temples are renowned for their architectural sophistication and alignment with celestial events. They are part of the UNESCO World Heritage site of the Megalithic Temples of Malta.",
+        },
+        {
+          src: "https://www.choiceholidays.eu/assets/userfiles/blue-lagoon-malta-beaches.jpg",
+          alt: "Blue Lagoon",
+          title: "Blue Lagoon",
+          description:
+            "Located on Comino Island, the Blue Lagoon is famous for its stunning turquoise waters, making it a popular spot for swimming, snorkeling, and relaxation. Its picturesque landscape attracts both locals and tourists alike.",
+        },
+        {
+          src: "https://www.ourescapeclause.com/wp-content/uploads/2023/11/shutterstock_1408484216-scaled.jpg",
+          alt: "Blue Grotto",
+          title: "Blue Grotto",
+          description:
+            "A natural wonder along the coast of Malta, the Blue Grotto features striking blue waters and a series of sea caves. Visitors can take boat trips to explore the area and witness the unique colors created by the sunlight.",
+        },
+        {
+          src: "https://wallpapercat.com/w/full/1/e/f/2011350-3840x2160-desktop-4k-valletta-malta-wallpaper-image.jpg",
+          alt: "Valletta",
+          title: "Valletta",
+          description:
+            "The capital city of Malta, Valletta is known for its rich history, stunning architecture, and vibrant cultural scene. It is a UNESCO World Heritage site and offers a mix of ancient and modern attractions.",
+        },
+      ];
+
+      // Function to add slides and indicators to the carousel
+      function addSlides(slides) {
+        const carouselInner = document.getElementById("carousel-inner");
+        const carouselIndicators = document.getElementById(
+          "carousel-indicators"
+        );
+        const template = document.getElementById(
+          "carousel-item-template"
+        ).content;
+
+        slides.forEach((slide, index) => {
+          // Clone the template for each slide
+          const clone = document.importNode(template, true);
+          const img = clone.querySelector("img");
+          const title = clone.querySelector(".landmark-title");
+          const description = clone.querySelector(".landmark-description");
+
+          // Set image, title, and description content
+          img.src = slide.src;
+          img.alt = slide.alt;
+          title.textContent = slide.title;
+          description.textContent = slide.description;
+
+          // Add active class to the first slide
+          if (index === 0) {
+            clone.querySelector(".carousel-item").classList.add("active");
+          }
+
+          // Append the cloned slide to the carousel inner
+          carouselInner.appendChild(clone);
+
+          // Create and append the indicator
+          const indicator = document.createElement("li");
+          indicator.setAttribute("data-target", "#landmarkCarousel");
+          indicator.setAttribute("data-slide-to", index);
+          if (index === 0) {
+            indicator.classList.add("active");
+          }
+          carouselIndicators.appendChild(indicator);
+        });
+      }
+
+      // Add slides and indicators to the carousel at runtime
+      addSlides(slides);
+      loadNavbar();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Malta</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .navbar-custom {
+        padding: 15px;
+        background-color: #f0dddc; /* Update this color as needed */
+      }
+      .smallImg {
+        height: auto;
+      }
+      .boredered {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row bordered">
+      <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+        <a id="location-title" class="navbar-brand">Explore Malta</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="example.html"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="landmarks.html">Landmarks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Beaches</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cuisine.html">Cuisine</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              name="search"
+            />
+
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+          <button id="random-button" class="btn btn-outline-primary">
+            Randomize
+          </button>
+        </div>
+      </nav>
+      <div style="height: 70px"></div>
+      <!-- Spacer -->
+      <!-- <img
+        class="col-1 smallImg"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flag_of_Malta.svg/1599px-Flag_of_Malta.svg.png"
+        alt="Maltese Flags"
+      /> -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
